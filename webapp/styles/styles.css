@@ -1,0 +1,250 @@
+body {
+    font-family: calibri;
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+}
+
+.inline_form {
+    display: inline;
+}
+
+input[type=text], input[type=password], select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid rgb(200, 203, 209);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 6px 0;
+    resize: vertical;
+}
+
+#drugSelect {
+    width: auto;
+}
+
+.alert {
+    color: red;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.centreDiv {
+    width: auto;
+    text-align: center;
+}
+
+input[type=submit],input[type=button], button {
+    background-color: rgb(49, 158, 191);
+    color: rgb(243, 243, 243);
+    margin: 8px 4px 4px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-container {
+    border-radius: 20px;
+    border-color: rgb(80, 92, 103);
+    border-style: solid;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.lowStockContainer {
+    border-radius: 20px;
+    border-color: rgb(80, 92, 103);
+    border-style: solid;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    padding-top: 0;
+    width: 60%;
+    margin: 20px auto;
+}
+
+.batchesContainer {
+    border-radius: 20px;
+    border-color: rgb(80, 92, 103);
+    border-style: solid;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    width: 60%;
+    margin: 20px auto;
+}
+
+.centreCell {
+    text-align: center;
+}
+
+.checkContainer {
+    border-radius: 20px;
+    border-color: rgb(80, 92, 103);
+    border-style: solid;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    width: 50%;
+    margin: 20px auto;
+}
+
+.authorContainer {
+    border-radius: 20px;
+    border-color: rgb(80, 92, 103);
+    border-style: solid;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.authorContainer table {
+    text-align: center;
+    font-weight: bold;
+}
+
+footer p {
+    text-align: center;
+}
+
+.emphasise {
+    color: red;
+    font-weight: bold;
+}
+
+#entriesContainer {
+    border-radius: 20px;
+    border-color: rgb(80, 92, 103);
+    border-style: solid;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+#checksContainer {
+    border-radius: 20px;
+    border-color: rgb(80, 92, 103);
+    border-style: solid;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.drugSelectError {
+    margin-right: 10px;
+    color: red;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+li a {
+     display: block;
+     color: white;
+     text-align: center;
+     padding: 16px;
+     text-decoration: none;
+ }
+
+form.drugList {
+    color: white;
+    text-align: center;
+    padding: 0;
+    text-decoration: none;
+    margin: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+ul.error {
+    list-style-type: disc;
+    color: red;
+    text-align: left;
+    font-weight: bolder;
+    background-color: inherit;
+    overflow: unset;
+    padding-left: 10px;
+}
+
+ul.error>li {
+    list-style-type: disc;
+}
+
+.left-error {
+    color: red;
+    text-align: left;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+.success {
+    color: #399039;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.cellCan {
+    background-color: #399039;
+    color: black;
+}
+
+.cellCannot {
+    background-color: #ff898c;
+    color: black;
+}
+
+.autowidth {
+    width: auto;
+}
+
+.autowidth {
+    width: auto;
+}
+
+.borderless {
+    border: 0px;
+}
+
+h1.header {
+    margin: 0;
+    padding-left: 15px;
+    text-align: left;
+    display: inline;
+ }
+
+h2.header {
+    margin: 0;
+    padding-left: 15px;
+    text-align: left;
+    display: inline;
+}
+
+@media only screen and (max-width: 1441px) {
+
+}
+
