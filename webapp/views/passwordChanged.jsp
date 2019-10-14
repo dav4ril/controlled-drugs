@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Password Change</h2>
+<h4>Password Change</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="checkContainer">
     <p class="error">${errorMessage}</p>

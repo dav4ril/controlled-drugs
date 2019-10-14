@@ -9,22 +9,6 @@ function initialSetup() {
     toggleTakeBatchInput();
 }
 
-function scrollUp() {
-    scroll(0,0);
-}
-
-function scrollCreate() {
-    scroll(0,530);
-}
-
-function scrollEntries() {
-    scroll(0,985);
-}
-
-function scrollBatches() {
-    scroll(0,1595);
-}
-
 function toggleFields() {
     if (typeSelector.options[typeSelector.selectedIndex].value == "patient") {
         patientNameInput.style.display = "block";
@@ -109,22 +93,9 @@ var addBatchSelectContainer = document.getElementById('addBatchSelectContainer')
 var takeBatchSelectContainer = document.getElementById('takeBatchSelectContainer');
 var addBatchSelect = document.getElementById('addBatchSelect');
 var takeBatchSelect = document.getElementById('takeBatchSelect');
-var scrollToTop = document.getElementById('scrollToTop');
-var scrollToEntries = document.getElementById('scrollToEntries');
-var scrollToCreate = document.getElementById('scrollToCreate');
-var scrollToBatches = document.getElementById('scrollToBatches');
-var pointer = document.getElementById("myP")
 
 typeSelector.addEventListener('change', toggleFields, false);
-scrollToTop.addEventListener('click', scrollUp, false);
-scrollToCreate.addEventListener('click', scrollCreate, false);
-scrollToEntries.addEventListener('click', scrollEntries, false);
-scrollToBatches.addEventListener('click', scrollBatches, false);
 addBatchSelect.addEventListener('change', toggleAddBatchInput, false);
 takeBatchSelect.addEventListener('change', toggleTakeBatchInput, false);
-scrollToCreate.style.cursor = "pointer";
-scrollToTop.style.cursor = "pointer";
-scrollToEntries.style.cursor = "pointer";
-scrollToBatches.style.cursor = "pointer";
 
 initialSetup();

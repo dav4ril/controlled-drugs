@@ -6,7 +6,6 @@
 <%  int localDrugId = Integer.parseInt(request.getAttribute("drugId").toString());
     Drug selectedDrug = Drug.getDrug(localDrugId);
     int localWardId = Integer.parseInt(request.getParameter("wardId"));
-
 %>
 <html>
 <head>
@@ -16,14 +15,13 @@
 </head>
 <body class="extraTopMargin">
 <%@include file="header.jsp"%>
-<ul class="nav2">
-    <li><a id="scrollToTop">Details</a> </li>
-    <li><a id="scrollToCreate">Create Entry</a> </li>
-    <li><a id="scrollToEntries">Entries</a> </li>
-    <li><a id="scrollToBatches">Batches</a> </li>
-
+<ul class="nav justify-content-center">
+    <li class="nav-item"><a class="nav-link" href="#details">Details</a> </li>
+    <li class="nav-item"><a class="nav-link" href="#create">Create Entry</a> </li>
+    <li class="nav-item"><a class="nav-link" href="#entries">Entries</a> </li>
+    <li class="nav-item"><a class="nav-link" href="#batches">Batches</a> </li>
 </ul>
-<h2>Details: <%out.print(selectedDrug.toString());%></h2>
+<h4>Details: <%out.print(selectedDrug.toString());%></h4>
 <% if (request.getAttribute("alertErrorMessage") != null) { %>
 <div class="custom-container">
     <ul class="error">
@@ -58,7 +56,7 @@
             if (Authorisation.checkAuthority("setAlert", session.getAttribute("userLevel").toString())) {
         %>
         <tr>
-            <td>Edit alert level:</td><a id="create"></a>
+            <td>Edit alert level:</td>
             <td>
                 <form method="post" action="updateAlertLevel.do" autocomplete="off">
                     <input type="hidden" name="drugId" value="<%out.print(selectedDrug.getId());%>">
@@ -73,16 +71,17 @@
         %>
     </table>
 </div>
-<h2>Create New Entry</h2>
-<%  boolean messageExists = false;
+<a id="create"></a>
+<h4>Create New Entry</h4>
+<%
     if (request.getAttribute("errorMessage") != null) {
-        messageExists = true; %>
+%>
 <div class="custom-container">
     <ul class="error">${errorMessage}</ul>
 </div>
 <% } %>
 <%  if (request.getAttribute("successMessage") != null) {
-        messageExists = true; %>
+%>
 <div class="custom-container">
     <p class="success">${successMessage}</p>
 </div>
@@ -184,85 +183,88 @@
         <input type="submit" value="Create entry">
     </form>
 </div>
-<h2>Entries</h2>
+<a id="entries"></a>
+<h4>Entries</h4>
 <%
     ArrayList<Entry> entriesList = Entry.getEntries(localDrugId, localWardId);
     if (!entriesList.isEmpty()) {
 %>
-    <div id="entriesContainer">
-        <table class="entries">
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Batch</th>
-                <th>Patient</th>
-                <th>Given By</th>
-                <th>Checked By</th>
-                <th>Type</th>
-                <th>Quantity Change</th>
-                <th>New Quantity</th>
-                <th>Comments</th>
-            </tr>
-            <%
-                for (Entry entry : entriesList) {
-                    int batchId = entry.getBatchId();
-                    String batchStr;
-                    if (batchId == -1) {
-                        batchStr = "(No batch)";
-                    } else {
-                        Batch batch = Batch.getBatch(batchId);
-                        batchStr = batch.getBatchStr();
-                    }
-                    String pattern = "00.#";
-                    DecimalFormat decimalFormat = new DecimalFormat(pattern);
-                    String hour = decimalFormat.format(entry.getDateTime().getHour());
-                    String minute = decimalFormat.format(entry.getDateTime().getMinute());
-                    String seconds = decimalFormat.format(entry.getDateTime().getSecond());
-            %>
-            <tr>
-                <td><%out.print(entry.getDateTime().getDayOfMonth());%>/
-                    <%out.print(entry.getDateTime().getMonth());%>/
-                    <%out.print(entry.getDateTime().getYear());%>
-                </td>
-                <td><%out.print(hour);%>:
-                    <%out.print(minute);%>:
-                    <%out.print(seconds);%>
-                </td>
-                <td><%out.print(batchStr);%></td>
-                <td><%out.print(entry.getPatient());%></td>
-                <td><a href="viewUser.do?username=<%out.print(entry.getGivenBy());%>" >
-                    <%out.print(entry.getGivenBy());%>
-                    </a>
-                </td>
-                <td><a href="viewUser.do?username=<%out.print(entry.getCheckedBy());%>" >
-                    <%out.print(entry.getCheckedBy());%>
-                    </a>
-                </td>
-                <td>
-                    <%out.print(entry.getType().substring(0,1).toUpperCase() + entry.getType().substring(1));%>
-                </td>
-                <td><%out.print(entry.getQuantityChange());%></td>
-                <td><%out.print(entry.getNewQuantity());%></td>
-                <td><%out.print(entry.getComments());%></td>
-            </tr>
-            <%
+
+    <table class="table table-hover">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Batch</th>
+            <th>Patient</th>
+            <th>Given By</th>
+            <th>Checked By</th>
+            <th>Type</th>
+            <th>Quantity Change</th>
+            <th>New Quantity</th>
+            <th>Comments</th>
+        </tr>
+        <%
+            for (Entry entry : entriesList) {
+                int batchId = entry.getBatchId();
+                String batchStr;
+                if (batchId == -1) {
+                    batchStr = "(No batch)";
+                } else {
+                    Batch batch = Batch.getBatch(batchId);
+                    batchStr = batch.getBatchStr();
                 }
-            %>
-        </table>
-    </div>
+                String pattern = "00.#";
+                DecimalFormat decimalFormat = new DecimalFormat(pattern);
+                String hour = decimalFormat.format(entry.getDateTime().getHour());
+                String minute = decimalFormat.format(entry.getDateTime().getMinute());
+                String seconds = decimalFormat.format(entry.getDateTime().getSecond());
+        %>
+        <tr>
+            <td><%out.print(entry.getDateTime().getDayOfMonth());%>/
+                <%out.print(entry.getDateTime().getMonth());%>/
+                <%out.print(entry.getDateTime().getYear());%>
+            </td>
+            <td><%out.print(hour);%>:
+                <%out.print(minute);%>:
+                <%out.print(seconds);%>
+            </td>
+            <td><%out.print(batchStr);%></td>
+            <td><%out.print(entry.getPatient());%></td>
+            <td><a href="viewUser.do?username=<%out.print(entry.getGivenBy());%>" >
+                <%out.print(entry.getGivenBy());%>
+                </a>
+            </td>
+            <td><a href="viewUser.do?username=<%out.print(entry.getCheckedBy());%>" >
+                <%out.print(entry.getCheckedBy());%>
+                </a>
+            </td>
+            <td>
+                <%out.print(entry.getType().substring(0,1).toUpperCase() + entry.getType().substring(1));%>
+            </td>
+            <td><%out.print(entry.getQuantityChange());%></td>
+            <td><%out.print(entry.getNewQuantity());%></td>
+            <td><%out.print(entry.getComments());%></td>
+        </tr>
+        <%
+            }
+        %>
+    </table>
+
 <%
     } else {
 %>
-    <p class="error">No entries exist for this drug</p>
+    <div class="custom-container">
+        <p class="error">No entries exist for this drug</p>
+    </div>
 <%
     }
 %>
-<h2>Batches</h2><a id="batches"></a>
+<a id="batches"></a>
+<h4>Batches</h4><a id="batches"></a>
 <%
     if (!wardBatchList.isEmpty()) {
 %>
-<div class="batchesContainer">
-    <table class="entries">
+    <table class="table table-hover">
         <tr>
             <th>Batch</th>
             <th>Expiry Date</th>
@@ -286,23 +288,15 @@
             }
         %>
     </table>
-</div>
 <%
-} else {
+    } else {
 %>
-<p class="error">No batches exist for this drug</p>
+    <div class="custom-container">
+        <p class="error">No batches exist for this drug</p>
+    </div>
 <%
     }
 %>
 
 <script type="text/javascript" src="../scripts/entries.js"></script>
-<%
-    if (messageExists) {
-%>
-        <script type="text/javascript">
-            scrollCreate()
-        </script>
-<%
-    }
-%>
 <%@include file="footer.jsp"%>

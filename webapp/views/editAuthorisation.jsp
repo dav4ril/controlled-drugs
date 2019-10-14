@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Edit User Level: <%out.print(request.getParameter("level"));%></h2>
+<h4>Edit User Level: <%out.print(request.getParameter("level"));%></h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="container">
     <ul class="error">${errorMessage}</ul>

@@ -6,7 +6,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Create New Drug Profile</h2>
+<h4>Create New Drug Profile</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="custom-container">
     <ul class="error">${errorMessage}</ul>

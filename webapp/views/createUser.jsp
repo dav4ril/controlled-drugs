@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Create User</h2>
+<h4>Create User</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
     <div class="custom-container">
         <ul class="error">${errorMessage}</ul>

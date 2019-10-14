@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Authorisations</h2>
+<h4>Authorisations</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="custom-container">
     <ul class="error">${errorMessage}</ul>
@@ -18,28 +18,27 @@
     <p class="success">${successMessage}</p>
 </div>
 <% } %>
-<div class=authorContainer>
-<table>
+<table class="table-active">
     <tr>
-        <th>User Level</th>
-        <th>Create Admin</th>
-        <th>Create Nurse</th>
-        <th>Create ODP</th>
-        <th>Create Pharmacist</th>
-        <th>Create Student</th>
-        <th>Create Pharmacy Technician</th>
-        <th>Create Doctor</th>
-        <th>Create Sister</th>
-        <th>Create Entry</th>
-        <th>Check Entry</th>
-        <th>Create Ward</th>
-        <th>Create Drug</th>
-        <th>Allocate Drug</th>
-        <th>Perform Full Check</th>
-        <th>Set Alert Level</th>
-        <th>Give Drug</th>
-        <th>Reset Passwords</th>
-        <th>Edit</th>
+        <th class="table-secondary">User Level</th>
+        <th class="table-secondary">Create Admin</th>
+        <th class="table-secondary">Create Nurse</th>
+        <th class="table-secondary">Create ODP</th>
+        <th class="table-secondary">Create Pharmacist</th>
+        <th class="table-secondary">Create Student</th>
+        <th class="table-secondary">Create Pharmacy Technician</th>
+        <th class="table-secondary">Create Doctor</th>
+        <th class="table-secondary">Create Sister</th>
+        <th class="table-secondary">Create Entry</th>
+        <th class="table-secondary">Check Entry</th>
+        <th class="table-secondary">Create Ward</th>
+        <th class="table-secondary">Create Drug</th>
+        <th class="table-secondary">Allocate Drug</th>
+        <th class="table-secondary">Perform Full Check</th>
+        <th class="table-secondary">Set Alert Level</th>
+        <th class="table-secondary">Give Drug</th>
+        <th class="table-secondary">Reset Passwords</th>
+        <th class="table-secondary">Edit</th>
     </tr>
 <%
     ArrayList<Authorisation> authorisationsList = Authorisation.getAuthorisations();
@@ -49,7 +48,7 @@
         }
 %>
     <tr>
-        <td><%out.print(authorisation.getLevel());%></td>
+        <td class="table-secondary"><%out.print(authorisation.getLevel());%></td>
         <%
             out.print(Authorisation.cellCreation(authorisation.canCreateAdmin()));
             out.print(Authorisation.cellCreation(authorisation.canCreateNurse()));
@@ -80,5 +79,4 @@
     }
 %>
 </table>
-</div>
 <%@include file="footer.jsp"%>

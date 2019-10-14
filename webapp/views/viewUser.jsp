@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>View User Details : ${username}</h2>
+<h4>View User Details : ${username}</h4>
 <div class="custom-container">
     <table>
         <tr>
@@ -27,7 +27,7 @@
 <%
     if (Authorisation.checkAuthority("resetPassword", session.getAttribute("userLevel").toString())) {
 %>
-<h2>Reset User Password</h2>
+<h4>Reset User Password</h4>
 <div class="custom-container">
     <p class="error">Warning:</p>
     <ul class="error">

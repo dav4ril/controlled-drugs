@@ -247,9 +247,9 @@ public class Authorisation {
 
     public static String cellCreation(boolean authorised) {
         if (authorised) {
-            return "<td class=\"cellCan\">Yes</td>";
+            return "<td class=\"table-success\">Yes</td>";
         }
-        return "<td class=\"cellCannot\">No</td>";
+        return "<td class=\"table-danger\">No</td>";
     }
 
     public static boolean checkAuthority(String action, String currentUserLevel) {

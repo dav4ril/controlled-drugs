@@ -5,10 +5,11 @@
 <head>
     <title>Controlled Drugs - Login</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h1>Controlled Drugs Record</h1>
-<h2>Please login below:</h2>
+<h3>Controlled Drugs Record</h3>
+<h4>Please login below:</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="custom-container">
     <p class="error">${errorMessage}</p>

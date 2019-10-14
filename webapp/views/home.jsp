@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Dashboard</h2>
+<h4>Dashboard</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <p class="error">${errorMessage}</p>
 <% } %>
@@ -20,48 +20,49 @@
 <%
     }
 %>
-<div class="lowStockContainer">
-    <h2>Low Stock Alerts</h2>
-    <%
-        ArrayList<Drug> lowStock = Drug.getLowStockDrugs(wardId);
-        if (lowStock.size() == 0) {
-    %>
-            <p class="success">No drugs below alert levels</p>
-    <%
-        } else {
-    %>
-            <table>
-                <tr>
-                    <th>Drug</th>
-                    <th>Current Quantity</th>
-                    <th>Alert Level</th>
-                    <th>Drug Page</th>
-                </tr>
-    <%
-            for (Drug drug : lowStock) {
-                String viewDrugStr = "viewDrug.do?drugId=" + drug.getId() + "&wardId=" + wardId;
-    %>
-                <tr class="centreCell">
-                    <td><%out.print(drug.toString());%></td>
-                    <td><%out.print(Ward.getWardDrugQuantity(wardId, drug.getId()));%></td>
-                    <td><%out.print(Ward.getWardDrugAlert(wardId, drug.getId()));%></td>
-                    <td><a href="<%out.print(viewDrugStr);%>"><button>View Drug Page</button></a></td>
-                </tr>
-    <%
-            }
-        }
-    %>
-            </table>
+<h4>Low Stock Alerts</h4>
+<%
+    ArrayList<Drug> lowStock = Drug.getLowStockDrugs(wardId);
+    if (lowStock.size() == 0) {
+%>
+<div class="custom-container">
+    <p class="success">No drugs below alert levels</p>
 </div>
+<%
+    } else {
+%>
+        <table class="table table-hover">
+            <tr>
+                <th>Drug</th>
+                <th>Current Quantity</th>
+                <th>Alert Level</th>
+                <th>Drug Page</th>
+            </tr>
+<%
+        for (Drug drug : lowStock) {
+            String viewDrugStr = "viewDrug.do?drugId=" + drug.getId() + "&wardId=" + wardId;
+%>
+            <tr class="centreCell">
+                <td><%out.print(drug.toString());%></td>
+                <td><%out.print(Ward.getWardDrugQuantity(wardId, drug.getId()));%></td>
+                <td><%out.print(Ward.getWardDrugAlert(wardId, drug.getId()));%></td>
+                <td><a href="<%out.print(viewDrugStr);%>"><button>View Drug Page</button></a></td>
+            </tr>
+<%
+        }
+    }
+%>
+        </table>
 
-<div class="lowStockContainer">
-    <h2>Expiring Batches</h2>
+    <h4>Expiring Batches</h4>
     <% ArrayList<Batch> expiringBatchList = Batch.getWardExpiringBatches(wardId); %>
     <% LocalDate now = LocalDate.of(2019, 8, 25); %>
     <% if (expiringBatchList.size() == 0) { %>
+        <div class="custom-container">
             <p class="success">No Expiring Batches</p>
+        </div>
     <% } else { %>
-            <table>
+            <table class="table table-hover">
                 <tr>
                     <th>Drug Description</th>
                     <th>Batch No.</th>
@@ -86,5 +87,4 @@
     <%      } %>
     <% } %>
             </table>
-</div>
 <%@include file="footer.jsp"%>

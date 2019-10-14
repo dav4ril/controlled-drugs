@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2><%out.print(session.getAttribute("wardName"));%>: Stock Check</h2>
+<h4><%out.print(session.getAttribute("wardName"));%>: Stock Check</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="checkContainer">
     <p class="error">${errorMessage}</p>
@@ -59,38 +59,46 @@
     <input type="submit" value="Submit Check">
     </form>
 </div>
-<div id="checksContainer">
-    <h2>Previous Checks for <%out.print(session.getAttribute("wardName"));%></h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>1st Checker</th>
-            <th>2nd Checker</th>
-        </tr>
-        <%
-            ArrayList<Check> checkEntries = Check.getChecks(wardId);
+<h2>Previous Checks for <%out.print(session.getAttribute("wardName"));%></h2>
+    <%
+        ArrayList<Check> checkEntries = Check.getChecks(wardId);
+        if (checkEntries.isEmpty()) {
+    %>
+    <div class="custom-container">
+        <p class="error">No Checks for current area yet.</p>
+    </div>
+    <%
+        } else {
+    %>
+<table class="table table-hover">
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>1st Checker</th>
+        <th>2nd Checker</th>
+    </tr>
+    <%
             for (Check check : checkEntries) {
-        %>
-        <tr>
-            <td><%out.print(check.getDateTime().getDayOfMonth() + "/" + check.getDateTime().getMonthValue() + "/" +
-                    check.getDateTime().getYear());%></td>
-            <td><%out.print(check.getDateTime().getHour() + ":" + check.getDateTime().getMinute() + ":" +
-                    check.getDateTime().getSecond());%></td>
-            <td>
-                <a href="viewUser.do?username=<%out.print(check.getCurrentUser());%>">
-                    <%out.print(check.getCurrentUser());%>
-                </a>
-            </td>
-            <td>
-                <a href="viewUser.do?username=<%out.print(check.getCheckingUser());%>">
-                    <%out.print(check.getCheckingUser());%>
-                </a>
-            </td>
-        </tr>
-        <%
+    %>
+    <tr>
+        <td><%out.print(check.getDateTime().getDayOfMonth() + "/" + check.getDateTime().getMonthValue() + "/" +
+                check.getDateTime().getYear());%></td>
+        <td><%out.print(check.getDateTime().getHour() + ":" + check.getDateTime().getMinute() + ":" +
+                check.getDateTime().getSecond());%></td>
+        <td>
+            <a href="viewUser.do?username=<%out.print(check.getCurrentUser());%>">
+                <%out.print(check.getCurrentUser());%>
+            </a>
+        </td>
+        <td>
+            <a href="viewUser.do?username=<%out.print(check.getCheckingUser());%>">
+                <%out.print(check.getCheckingUser());%>
+            </a>
+        </td>
+    </tr>
+    <%
             }
-        %>
-    </table>
-</div>
+        }
+    %>
+</table>
 <%@include file="footer.jsp"%>

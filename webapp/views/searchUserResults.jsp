@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Search Users</h2>
+<h4>Search Users</h4>
 <h2>First name: "<%out.print(request.getParameter("first"));%>"
     Surname: "<%out.print(request.getParameter("surname"));%>"</h2>
 <% if (request.getAttribute("errorMessage") != null) { %>

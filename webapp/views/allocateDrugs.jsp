@@ -6,7 +6,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Allocate Drug to Area: <%out.print(session.getAttribute("wardName").toString());%></h2>
+<h4>Allocate Drug to Area: <%out.print(session.getAttribute("wardName").toString());%></h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="custom-container">
     <ul class="error">${errorMessage}</ul>

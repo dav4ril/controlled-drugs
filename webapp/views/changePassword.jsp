@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Change Password for User: <%out.print(session.getAttribute("user").toString());%></h2>
+<h4>Change Password for User: <%out.print(session.getAttribute("user").toString());%></h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="custom-container">
     <ul class="error">${errorMessage}</ul>

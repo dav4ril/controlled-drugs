@@ -6,7 +6,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h2>Add Area</h2>
+<h4>Add Area</h4>
 <% if (request.getAttribute("errorMessage") != null) { %>
 <div class="custom-container">
     <ul class="error">${errorMessage}</ul>
