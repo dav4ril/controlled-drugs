@@ -18,7 +18,6 @@
     <p class="success">${successMessage}</p>
 </div>
 <% } %>
-<div class="checkContainer">
     <table>
         <tr>
             <th>Drug Description</th>
@@ -58,7 +57,6 @@
         <input type="hidden" name="wardId" value="<%out.print(wardId);%>">
     <input type="submit" value="Submit Check">
     </form>
-</div>
 <h2>Previous Checks for <%out.print(session.getAttribute("wardName"));%></h2>
     <%
         ArrayList<Check> checkEntries = Check.getChecks(wardId);
@@ -70,7 +68,7 @@
     <%
         } else {
     %>
-<table class="table table-hover">
+<table class="table">
     <tr>
         <th>Date</th>
         <th>Time</th>

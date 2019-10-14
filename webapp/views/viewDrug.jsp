@@ -92,7 +92,7 @@
 %>
 <div class="custom-container">
     <form action="viewDrug.do" method="post" autocomplete="off">
-        <h2>Drug: <%out.print(selectedDrug.getName() + " " + selectedDrug.getStrength());%></h2>
+        <h5>Drug: <%out.print(selectedDrug.getName() + " " + selectedDrug.getStrength());%></h5>
         Type of Entry:<br>
         <select id="typeSelector" name="type">
             <option value="patient">Patient</option>
